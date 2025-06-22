@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 const API = import.meta.env.VITE_API_URL;
-axios.get(`${API}/api/produto/${formData.codProducao}`);
-axios.post(`${API}/api/formulario`, dadosComUsuario);
+
 
 function ConsultaProdutos() {
   const [codigo, setCodigo] = useState("");
@@ -11,7 +10,7 @@ function ConsultaProdutos() {
 
   const buscarProduto = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/producao/total/${codigo}`);
+      const res = await axios.get(`${API}/api/producao/total/${codigo}`);
 
       if (res.data.success) {
         setProduto(res.data.data);

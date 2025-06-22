@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 const API = import.meta.env.VITE_API_URL;
-axios.get(`${API}/api/produto/${formData.codProducao}`);
-axios.post(`${API}/api/formulario`, dadosComUsuario);
+
 
 function Formulario() {
   const { usuario } = useAuth();
@@ -18,7 +17,7 @@ useEffect(() => {
       console.log("Buscando produto:", formData.codProducao);
 
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/produto/${formData.codProducao}`);
+        const res = await axios.get(`${API}/api/produto/${formData.codProducao}`);
         console.log("Resposta da API:", res.data); // <= Adicione isso também
         if (res.data.success) {
           setFormData((prev) => ({
@@ -132,7 +131,7 @@ useEffect(() => {
 
     try {
       console.log("Dados sendo enviados:", dadosComUsuario);
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/formulario`, dadosComUsuario);
+      const res = await axios.post(`${API}/api/formulario`, dadosComUsuario);
       console.log("Resposta da API:", res.data);
       if (res.data.success) {
         setMensagem({ tipo: "sucesso", texto: "Dados enviados com sucesso!" });

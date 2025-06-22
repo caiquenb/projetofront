@@ -64,8 +64,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 const API = import.meta.env.VITE_API_URL;
-axios.get(`${API}/api/produto/${formData.codProducao}`);
-axios.post(`${API}/api/formulario`, dadosComUsuario);
+
 
 function ListaProdutos() {
   const [produtos, setProdutos] = useState([]);
@@ -82,7 +81,7 @@ function ListaProdutos() {
 
   const buscarProdutos = async () => {
     try {
-      const res = await axios.get("${import.meta.env.VITE_API_URL}/api/producao/recentes");
+      const res = await axios.get("${API}/api/producao/recentes");
       if (res.data.success) {
         setProdutos(res.data.data);
       }
@@ -161,7 +160,7 @@ const salvarEdicao = async () => {
     // Cria um novo objeto para enviar com a data formatada corretamente
     const dadosParaEnviar = { ...formData, data: dataFormatada };
 
-    await axios.put(`${import.meta.env.VITE_API_URL}/api/producao/${editando}`, dadosParaEnviar);
+    await axios.put(`${API}/api/producao/${editando}`, dadosParaEnviar);
     setEditando(null);
     buscarProdutos();
     setAlerta({ tipo: "sucesso", mensagem: "Produto atualizado com sucesso!" });
