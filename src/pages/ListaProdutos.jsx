@@ -63,6 +63,9 @@
 // export default ListaProdutos;
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+const API = import.meta.env.VITE_API_URL;
+axios.get(`${API}/api/produto/${formData.codProducao}`);
+axios.post(`${API}/api/formulario`, dadosComUsuario);
 
 function ListaProdutos() {
   const [produtos, setProdutos] = useState([]);

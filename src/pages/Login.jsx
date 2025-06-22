@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+const API = import.meta.env.VITE_API_URL;
+axios.get(`${API}/api/produto/${formData.codProducao}`);
+axios.post(`${API}/api/formulario`, dadosComUsuario);
 
 export default function Login() {
   const [usuario, setUsuario] = useState("");
