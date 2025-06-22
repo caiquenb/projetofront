@@ -8,7 +8,7 @@ function ConsultaProdutos() {
 
   const buscarProduto = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/producao/total/${codigo}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/producao/total/${codigo}`);
 
       if (res.data.success) {
         setProduto(res.data.data);

@@ -79,7 +79,7 @@ function ListaProdutos() {
 
   const buscarProdutos = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/producao/recentes");
+      const res = await axios.get("${import.meta.env.VITE_API_URL}/api/producao/recentes");
       if (res.data.success) {
         setProdutos(res.data.data);
       }
@@ -91,7 +91,7 @@ function ListaProdutos() {
   const excluirProduto = async (id) => {
     if (!window.confirm("Tem certeza que deseja excluir este produto?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/producao/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/producao/${id}`);
       buscarProdutos();
     } catch (err) {
       console.error("Erro ao excluir produto:", err);
@@ -158,7 +158,7 @@ const salvarEdicao = async () => {
     // Cria um novo objeto para enviar com a data formatada corretamente
     const dadosParaEnviar = { ...formData, data: dataFormatada };
 
-    await axios.put(`http://localhost:5000/api/producao/${editando}`, dadosParaEnviar);
+    await axios.put(`${import.meta.env.VITE_API_URL}/api/producao/${editando}`, dadosParaEnviar);
     setEditando(null);
     buscarProdutos();
     setAlerta({ tipo: "sucesso", mensagem: "Produto atualizado com sucesso!" });

@@ -15,7 +15,7 @@ useEffect(() => {
       console.log("Buscando produto:", formData.codProducao);
 
       try {
-        const res = await axios.get(`http://localhost:5000/api/produto/${formData.codProducao}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/produto/${formData.codProducao}`);
         console.log("Resposta da API:", res.data); // <= Adicione isso também
         if (res.data.success) {
           setFormData((prev) => ({
@@ -129,7 +129,7 @@ useEffect(() => {
 
     try {
       console.log("Dados sendo enviados:", dadosComUsuario);
-      const res = await axios.post("http://localhost:5000/api/formulario", dadosComUsuario);
+      const res = await axios.post("${import.meta.env.VITE_API_URL}/api/formulario", dadosComUsuario);
       console.log("Resposta da API:", res.data);
       if (res.data.success) {
         setMensagem({ tipo: "sucesso", texto: "Dados enviados com sucesso!" });
