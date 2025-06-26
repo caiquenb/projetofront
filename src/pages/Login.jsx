@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-const API = import.meta.env.VITE_API_URL;
+
 
 
 export default function Login() {
@@ -10,7 +10,9 @@ export default function Login() {
   const [erro, setErro] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
-
+  
+  const API = import.meta.env.VITE_API_URL;
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
